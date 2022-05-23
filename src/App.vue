@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>Users list (toal: {{ users.length }})</h1>
+  <input type="text" v-model="query">
+  <p>Searched users count: {{ filteredUsers.length }}</p>
+  <user v-for="user in filteredUsers" v-bind:user="user"></user>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import User from './components/user.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    User,
+  },
+  data() {
+    return {
+      users: [],
+      query: '',
+    }
+  },
+  async mounted() {
+    this.users = await fetch('https://sdal.pw/api/cdc/users').then(r => r.json());
+  },
+  computed: {
+    filteredUsers() {
+      return this.users.filter(user => user.name.includes(this.query));
+    }
   }
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>

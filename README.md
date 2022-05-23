@@ -6,10 +6,6 @@
 
 Созданное приложение домтупно по адресу <https://vue-users-list.web.app/>.
 
-Приложение обращается к API по адресу <http://sdal.pw/api/cdc/users>
-
-⚠ При включенных блокировзиков рекламы и трекеров приложение может работать некорректно из-за CORS.
-
 ## Полезные ссылки
 
 - [Документация Vue](https://vuejs.org/guide/introduction.html)
@@ -24,3 +20,25 @@ cd 2022-05-23-vue-users-list
 npm ci
 npm run serve
 ```
+
+## Обращение к API
+
+Приложение обращается к API по адресу <http://sdal.pw/api/cdc/users>. Пример ответа API:
+
+```json
+[
+    {
+        "id": 2,
+        "name": "Ford Schroeder",
+        "followers": [1, 17, 221],
+        "age": 30,
+        "verified": true
+    }
+]
+```
+
+⚠ При включенных блокировзиков рекламы и трекеров приложение может работать некорректно из-за CORS.
+
+## Снимок экрана
+
+![Снимок экрана vue-users-list](/docs/screenshot.png)
